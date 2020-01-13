@@ -1,20 +1,5 @@
 'use strict';
 
-agCookie.create('example-cookie', true, 1);
-
-var readValue = agCookie.read('example-cookie');
-
-console.log(readValue);
-
-agCookie.erase('example-cookie');
-
-function markoFunkcija(args) {
-    console.log(args);
-
-    return true;
-}
-'use strict';
-
 $(document).ready(function () {
   // home slider
   $(".owl-carousel-1").owlCarousel({
@@ -65,5 +50,41 @@ $(document).ready(function () {
     $('.tours .tab-title[data-number="' + activeNumber + '"]').addClass('active');
     $('.tours .tabs-content').removeClass('show');
     $('.tours .tabs-content[data-number="' + activeNumber + '"]').addClass('show');
+  });
+
+  //validate
+  $.validator.addMethod("valueNotEquals", function (value, element, arg) {
+    return arg !== value;
+  }, "Пожалуйста, выберете страну");
+
+  $("#subscribe").validate({
+    rules: {
+      name: "required",
+      email: {
+        required: true,
+        email: true
+      },
+      country: { valueNotEquals: "default" },
+      tel: "required"
+    },
+
+    messages: {
+      name: "Пожалуйста, введите Ваше имя",
+      email: "Пожалуйста, введите верный e-mail",
+      country: "Пожалуйста, выберете страну",
+      tel: "Пожалуйста, введите верный номер"
+    },
+    submitHandler: function submitHandler(form) {
+      form.submit();
+    }
+  });
+
+  //nicescroll
+  $(".nicescroll").niceScroll({
+    cursorcolor: "#fbd341",
+    cursorwidth: "8px",
+    cursorborderradius: "4px",
+    cursorfixedheight: true,
+    cursoropacitymin: 1
   });
 });

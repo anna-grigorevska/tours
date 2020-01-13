@@ -102,11 +102,20 @@ header{
           padding: 0;
           border: none;
           border-radius: unset;
+          overflow-x: hidden;
+          overflow-y: auto;
+          max-height: 300px;
           .dropdown-item{
             color: #ffffff;
             font-size: 14px;
             font-weight: 400;
-            margin: 10px;
+            margin: 10px 0;
+            &:first-child {
+              margin-top: 0;
+            }
+            &:last-child {
+              margin-bottom: 0;
+            }
             &:hover{
               background: none;
               color: $yellow;
@@ -121,24 +130,27 @@ header{
 main{
   .owl-carousel-1{
     .slide{
+      position: relative;
       overflow: hidden;
       height: 100vh;
-      background-size: cover;
+      background: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      &.slide-1{
-        background-image: url(../img/home.png);
-      }
-      &.slide-2{
-        background-image: url(../img/home.png);
-      }
-      &.slide-3{
-        background-image: url(../img/home.png);
+      .slide-img{
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
       .sentence{
-        // background-color: rgba(0, 76, 132, 0.49);
-        // background-image: linear-gradient(-264deg, rgba(15, 37, 71, 0.07) 0%, rgba(34, 51, 77, 0) 100%);
         padding: 65px 0 45px;
         position: relative;
         z-index: 1;
@@ -329,7 +341,13 @@ main{
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;
-      
+      display: flex;
+      align-items: center;
+      p {
+        padding-right: 50px;
+        max-height: 200px;
+        overflow: auto;
+      }
     }
   }
   .communication{
@@ -347,6 +365,7 @@ main{
       background-color: rgba(0, 0, 0, 0.6);
       padding: 50px 40px;
       .wrap-form{
+        position: relative;
         width: calc(20% - 20px);
         margin-right: 25px;
         .form-control{
@@ -368,6 +387,13 @@ main{
         &::last-child{
           margin-right: 0;
         }
+        .selectric-hide-select {
+          overflow: visible;
+          position: static;
+          select {
+            visibility: hidden;
+          }
+        }
         .selectric{
           display: flex;
           justify-content: space-between;
@@ -387,6 +413,7 @@ main{
         }
         .selectric-items{
           background-color: #f8f7f7;
+          z-index: 2;
           li{
             color: #000000;
             font-size: 16px;
@@ -398,6 +425,15 @@ main{
             }
           }
         } 
+        label.error{
+          text-align: center;
+          position: absolute;
+          left: 0;
+          bottom: -15px;
+          font-size: 12px;
+          color: #ff071e;
+          transform: translateY(100%);
+        }
       }
       button {
         min-width: 250px;
@@ -534,6 +570,14 @@ footer{
         
       }
     }
+  }
+}
+.nicescroll-rails{
+  background: #e1e0e0;
+  width: 1px !important;
+  .nicescroll-cursors{
+    height: 8px !important;
+    right: -3px;
   }
 }
 
