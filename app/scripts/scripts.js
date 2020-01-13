@@ -5,7 +5,7 @@ $(document).ready(function () {
   $(".owl-carousel-1").owlCarousel({
     items: 1,
     loop: true,
-    autoplay: false,
+    autoplay: true,
     autoplayHoverPause: true,
     navText: false,
     dots: true,
@@ -19,7 +19,7 @@ $(document).ready(function () {
   // second slider
   $(".owl-carousel-2").owlCarousel({
     loop: true,
-    autoplay: false,
+    autoplay: true,
     autoplayHoverPause: true,
     navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i></i>'],
     dots: false,
